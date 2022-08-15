@@ -1,3 +1,6 @@
+import tensorflow as tf
+from tensorflow import keras
+
 def GraphGenerator(
     dense_units, dropout_rate, latent_dim, adjacency_shape, feature_shape,
 ):
