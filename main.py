@@ -6,6 +6,11 @@ from tensorflow import keras
 import pandas as pd
 import ast
 
+from Utils.utils import *
+from model.generator import GraphGenerator
+from model.discriminator import GraphDiscriminator
+from model.wgan import GraphWGAN
+
 RDLogger.DisableLog("rdApp.*")
 data = pd.read_excel('./B3DB-main/raw_data/R1/data_formatted_done.xls')
 print(data.head())
@@ -89,6 +94,23 @@ feature_tensor = np.array(feature_tensor)
 
 print("adjacency_tensor.shape =", adjacency_tensor.shape)
 print("feature_tensor.shape =", feature_tensor.shape)
+
+generator = GraphGenerator(
+    dense_units=[512, 1024, 2048],
+    dropout_rate=0.2,
+    latent_dim=LATENT_DIM,
+    adjacency_shape=(BOND_DIM, NUM_ATOMS, NUM_ATOMS),
+    feature_shape=(NUM_ATOMS, ATOM_DIM),
+)
+
+discriminator = GraphDiscriminator(
+    gconv_units=[128, 128, 256, 256],
+    dense_units=[512, 512],
+    dropout_rate=0.2,
+    adjacency_shape=(BOND_DIM, NUM_ATOMS, NUM_ATOMS),
+    feature_shape=(NUM_ATOMS, ATOM_DIM),
+)
+
 
 wgan = GraphWGAN(generator, discriminator, discriminator_steps=1)
 
