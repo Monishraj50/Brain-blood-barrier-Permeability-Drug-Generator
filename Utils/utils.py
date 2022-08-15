@@ -1,3 +1,8 @@
+from rdkit import Chem, RDLogger
+from rdkit.Chem.Draw import IPythonConsole, MolsToGridImage
+import ast
+RDLogger.DisableLog("rdApp.*")
+
 def smiles_to_graph(smiles):
     # Converts SMILES to molecule object
     molecule = Chem.MolFromSmiles(smiles)
