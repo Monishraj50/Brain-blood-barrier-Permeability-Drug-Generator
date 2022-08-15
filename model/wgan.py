@@ -1,4 +1,5 @@
-
+import tensorflow as tf
+from tensorflow import keras
 
 class GraphWGAN(keras.Model):
     def __init__(
