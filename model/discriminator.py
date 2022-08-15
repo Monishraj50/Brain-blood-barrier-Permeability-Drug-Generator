@@ -27,10 +27,3 @@ def GraphDiscriminator(
     return keras.Model(inputs=[adjacency, features], outputs=x_out)
 
 
-discriminator = GraphDiscriminator(
-    gconv_units=[128, 128, 256, 256],
-    dense_units=[512, 512],
-    dropout_rate=0.2,
-    adjacency_shape=(BOND_DIM, NUM_ATOMS, NUM_ATOMS),
-    feature_shape=(NUM_ATOMS, ATOM_DIM),
-)
