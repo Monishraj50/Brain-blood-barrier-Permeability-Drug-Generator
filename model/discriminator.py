@@ -1,3 +1,8 @@
+import tensorflow as tf
+from tensorflow import keras
+from layers.graph_conv_layer import RelationalGraphConvLayer
+
+
 def GraphDiscriminator(
     gconv_units, dense_units, dropout_rate, adjacency_shape, feature_shape
 ):
