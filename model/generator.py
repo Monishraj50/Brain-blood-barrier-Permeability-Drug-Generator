@@ -22,12 +22,3 @@ def GraphGenerator(
 
     return keras.Model(inputs=z, outputs=[x_adjacency, x_features], name="Generator")
 
-
-generator = GraphGenerator(
-    dense_units=[512, 1024, 2048],
-    dropout_rate=0.2,
-    latent_dim=LATENT_DIM,
-    adjacency_shape=(BOND_DIM, NUM_ATOMS, NUM_ATOMS),
-    feature_shape=(NUM_ATOMS, ATOM_DIM),
-)
-generator.summary()
